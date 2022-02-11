@@ -1,101 +1,79 @@
-/**
- *
- * GPA Calculator
- */
+function Result() {
+  this.result = function (marks) {
+    let gpa;
+    let gread;
 
- function Result() {
-    this.gpaCal = (marks) => {
-      let gpa;
-  
-      if (marks > 0 && marks < 33) {
-        gpa = 0;
-      } else if (marks >= 33 && marks < 40) {
-        gpa = 1;
-      } else if (marks >= 40 && marks < 50) {
-        gpa = 2;
-      } else if (marks >= 50 && marks < 60) {
-        gpa = 3;
-      } else if (marks >= 60 && marks < 70) {
-        gpa = 4;
-      } else if (marks >= 70 && marks < 80) {
-        gpa = 4.5;
-      } else if (marks >= 80 && marks <= 100) {
-        gpa = 5;
-      }
-      return gpa;
-    };
-  
-    /**
-     *
-     * GRADE Calculator
-     */
-    this.gradeCal = (marks) => {
-      let grade;
-  
-      if (marks > 0 && marks < 33) {
-        grade = "F";
-      } else if (marks >= 33 && marks < 40) {
-        grade = "D";
-      } else if (marks >= 40 && marks < 50) {
-        grade = "C";
-      } else if (marks >= 50 && marks < 60) {
-        grade = "B";
-      } else if (marks >= 60 && marks < 70) {
-        grade = "A-";
-      } else if (marks >= 70 && marks < 80) {
-        grade = "A";
-      } else if (marks >= 80 && marks <= 100) {
-        grade = "A+";
-      }
-      return grade;
-    };
-  
-    /**
-     *
-     * CGPA Calculator
-     */
-  
-    this.cgpaCal = (bn, en, math, s, ss, rel) => {
-      let total_grade = bn + en + math + s + ss + rel;
-      let cgpa = total_grade / 6;
-  
-      if (
-        bn == 0 ||
-        en == 0 ||
-        math == 0 ||
-        s == 0 ||
-        ss == 0 ||
-        rel == 0
-      ) {
-        return `You are Failed`;
-      } else {
-      }
-  
-      return `${cgpa.toFixed(2)} & Total Grade = ${this.totalGrade(cgpa)}`;
-    };
+    if (marks >= 0 && marks < 33) {
+      gpa = 0;
+      gread = 'F';
+    } else if (marks >= 33 && marks < 40) {
+      gpa = 1;
+      gread = 'D';
+    } else if (marks >= 40 && marks < 50) {
+      gpa = 2;
+      gread = 'C';
+    } else if (marks >= 50 && marks < 60) {
+      gpa = 3;
+      gread = 'B';
+    } else if (marks >= 60 && marks < 70) {
+      gpa = 3.5;
+      gread = 'A-';
+    } else if (marks >= 70 && marks < 80) {
+      gpa = 4;
+      gread = 'A';
+    } else if (marks >= 80 && marks <= 100) {
+      gpa = 5;
+      gread = 'A+';
+    } else {
+      gpa = 'invalid';
+      gread = 'invalid';
+    }
 
-  
-    /**
-     *
-     * Total Grade Calculator
-     */
-  
-    this.totalGrade = (cgpa) => {
-      if (cgpa >= 0 && cgpa < 1) {
-        return "F";
-      } else if (cgpa >= 1 && cgpa < 2) {
-        return "D";
-      } else if (cgpa >= 2 && cgpa < 3) {
-        return "C";
-      } else if (cgpa >= 3 && cgpa < 3.5) {
-        return "B";
-      } else if (cgpa >= 3.5 && cgpa < 4) {
-        return "A-";
-      } else if (cgpa >= 4 && cgpa < 5) {
-        return "A";
-      } else if (cgpa == 5) {
-        return "A+";
-      }
+    return {
+      gpacal: gpa,
+      greadcal: gread
     };
   }
-  
+
+  this.finalCgpa = function (bn, en, math, sciance, socialscince, rel) {
+    let totalgpa =
+      this.result(bn).gpacal +
+      this.result(en).gpacal +
+      this.result(math).gpacal +
+      this.result(sciance).gpacal +
+      this.result(socialscince).gpacal +
+      this.result(rel).gpacal;
+
+    let finalscgpa = totalgpa / 6;
+
+    if (
+      bn < 33 || en < 33 || math < 33 || sciance < 33 || socialscince < 33 ||
+      rel < 33){
+      finalscgpa = 0;
+      finalgread = "F";
+    }else if(finalscgpa >=  1 && finalscgpa < 2){
+
+      finalgread = "D";
+    }else if(finalscgpa >= 2 && finalscgpa < 3){
+ 
+      finalgread = "C";
+    }else if(finalscgpa >=  3 && finalscgpa < 3.5){
+
+      finalgread = "B";
+    }else if(finalscgpa >=  3.5 && finalscgpa < 4){
+
+      finalgread = "A-";
+    }else if(finalscgpa >= 4 && finalscgpa < 5){
+
+      finalgread = "A";
+    }else if(finalscgpa ==  5){
+ 
+      finalgread = "A+";
+    }
+
+    return{
+      rescgpa : finalscgpa == 0 ? '' : finalscgpa.toFixed(2) ,
+      resgread : finalgread,
+    }
+  };
+}

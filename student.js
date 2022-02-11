@@ -22,7 +22,7 @@ const roll_valid = /^[0-9]{1,3}$/;
 const result_form = document.getElementById('result_form');
 const data_list = document.getElementById('data_list');
 
-
+let result = new Result;
 
 result_form.addEventListener('submit', function(e){
     e.preventDefault();
@@ -181,11 +181,11 @@ function allStudentData(){
                     <td>${student.student_roll}</td>
                     <td>${student.student_class}</td>
                     <td>${student.student_gender}</td>
-                    <td>4.80</td>
-                    <td>A</td>
+                    <td>${ result.finalCgpa(student.Ban_mark, student.Eng_mark, student.Math_mark, student.Science_mark, student.SS_mark, student.Religion_mark ).rescgpa }</td>
+                    <td>${ result.finalCgpa(student.Ban_mark, student.Eng_mark, student.Math_mark, student.Science_mark, student.SS_mark, student.Religion_mark ).resgread }</td>
                     <td> <img style="width: 50px; height: 50px; object-fit: cover;" src="${student.student_photo}" alt=""></td>
                     <td>
-                        <button class="btn btn-info btn-sm">View</button>
+                        <button class="btn btn-info btn-sm" onclick="getSingleResult(${index})" data-bs-toggle="modal" data-bs-target="#student_single_modal">View</button>
                         <button onclick="deleteStudentData(${index})" class="btn btn-danger btn-sm">Delete</button>
                     </td>
                 </tr>
@@ -216,8 +216,79 @@ function deleteStudentData (indx) {
         return false;
 
     }
+};
+
+
+const student_result_data = document.querySelector('.student-result-data');
+
+function getSingleResult(index){
 
     
+    let storage_data = dataGet('result_apps');
+    student_result_data.innerHTML = `
+                <img class="shadow" src="${storage_data[index].student_photo}" alt="">
+                <h2 class="text-center mt-3">${storage_data[index].student_name}</h2>
+
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Subject</th>
+                            <th>Marks</th>
+                            <th>GPA</th>
+                            <th>Grade</th>
+                            <th>CGPA</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr class="text-center">
+                            <td>Bangla</td>
+                            <td>${storage_data[index].Ban_mark}</td>
+                            <td>${result.result(storage_data[index].Ban_mark).gpacal}</td>
+                            <td>${result.result(storage_data[index].Ban_mark).greadcal}</td>
+                            <td rowspan="6">
+                            ${ result.finalCgpa(storage_data[index].Ban_mark, storage_data[index].Eng_mark, storage_data[index].Math_mark, storage_data[index].Science_mark, storage_data[index].SS_mark, storage_data[index].Religion_mark ).rescgpa }
+                            
+                            </td>
+                            <td rowspan="6">
+                            ${ result.finalCgpa(storage_data[index].Ban_mark, storage_data[index].Eng_mark, storage_data[index].Math_mark, storage_data[index].Science_mark, storage_data[index].SS_mark, storage_data[index].Religion_mark ).resgread }
+                            </td>
+                        </tr>
+                        <tr class="text-center">
+                            <td>English</td>
+                            <td>${storage_data[index].Eng_mark}</td>
+                            <td>${result.result(storage_data[index].Eng_mark).gpacal}</td>
+                            <td>${result.result(storage_data[index].Eng_mark).greadcal}</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td>Math</td>
+                            <td>${storage_data[index].Math_mark}</td>
+                            <td>${result.result(storage_data[index].Math_mark).gpacal}</td>
+                            <td>${result.result(storage_data[index].Math_mark).greadcal}</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td>Science</td>
+                            <td>${storage_data[index].Science_mark}</td>
+                            <td>${result.result(storage_data[index].Science_mark).gpacal}</td>
+                            <td>${result.result(storage_data[index].Science_mark).greadcal}</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td>Social Science</td>
+                            <td>${storage_data[index].SS_mark}</td>
+                            <td>${result.result(storage_data[index].SS_mark).gpacal}</td>
+                            <td>${result.result(storage_data[index].SS_mark).greadcal}</td>
+                        </tr>
+                        <tr class="text-center">
+                            <td>Religion</td>
+                            <td>${storage_data[index].Religion_mark}</td>
+                            <td>${result.result(storage_data[index].Religion_mark).gpacal}</td>
+                            <td>${result.result(storage_data[index].Religion_mark).greadcal}</td>
+                        </tr>
+                    </tbody>
+                </table>
+    
+    `;
 }
 
 

@@ -21,3 +21,17 @@ span {
     right: 10px;
     top: -30px;
 }
+
+.student-result-data {}
+.student-result-data img {
+    width: 200px;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
+.table > tbody {
+    vertical-align: middle !important;
+  }
+  
+
