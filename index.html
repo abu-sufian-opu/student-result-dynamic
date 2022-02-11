@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card shadow">
+                    <div class="card-header">
+                        <h2>Student Result</h2>
+                    </div>
+                    <div class="card-body">
+                        <form action="#" id="result_form">
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="Student Name">
+                                <div class="icon">
+                                    <!-- icon comes from student.js -->
+                                </div>
+                            </div>
+                            <p class="name-msg mb-3 text-danger"></p>
+
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="Student Roll">
+                                <div class="icon">
+                                    <!-- icon comes from student.js -->
+                                </div>
+                            </div>
+                            <p class="roll-msg mb-3 text-danger"></p>
+
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="Student Class">
+                                <div class="icon">
+                                    <!-- icon comes from student.js -->
+                                </div>
+                            </div>
+                            <p class="cls-msg mb-3 text-danger"></p>
+
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="Student Photo">
+                                <div class="icon">
+                                    <!-- icon comes from student.js -->
+                                </div>
+                            </div>
+                            <p class="photo-msg mb-3 text-danger"></p>
+
+                            <div class="form-group mb-3">
+                                <input name="gender" type="radio" value="Male" id="Male"> <label for="Male">Male</label>
+                                <input name="gender" type="radio" value="Female" id="Female"> <label for="Female">Female</label>                               
+                            </div>
+
+                            <h2 class="marks mb-3">Subject Marks</h2>
+                            <hr>
+                            
+                            <div class="form-group mb-3">
+                                <input class="form-control" type="text" placeholder="Bang">
+                                <div class="icon">
+                                    <!-- icon comes from student.js -->
+                                </div>
+                            </div>
+                            <p class="ban-msg mb-3 text-danger"></p>
+
+                            <div class="form-group mb-3">
+                                <input class="form-control" type="text" placeholder="English">
+                                <div class="icon">
+                                    <!-- icon comes from student.js -->
+                                </div>
+                            </div>
+                            <p class="eng-msg mb-3 text-danger"></p>
+
+                            <div class="form-group mb-3">
+                                <input class="form-control" type="text" placeholder="Math">
+                                <div class="icon">
+                                    <!-- icon comes from student.js -->
+                                </div>
+                            </div>
+                            <p class="math-msg mb-3 text-danger"></p>
+
+                            <div class="form-group mb-3">
+                                <input class="form-control" type="text" placeholder="Science">
+                                <div class="icon">
+                                    <!-- icon comes from student.js -->
+                                </div>
+                            </div>
+                            <p class="s-msg mb-3 text-danger"></p>
+
+                            <div class="form-group mb-3">
+                                <input class="form-control" type="text" placeholder="Social Science">
+                                <div class="icon">
+                                    <!-- icon comes from student.js -->
+                                </div>
+                            </div>
+                            <p class="ss-msg mb-3 text-danger"></p>
+
+                            <div class="form-group mb-3">
+                                <input class="form-control" type="text" placeholder="Religion">
+                                <div class="icon">
+                                    <!-- icon comes from student.js -->
+                                </div>
+                            </div>
+                            <p class="rel-msg mb-3 text-danger"></p>
+                            
+                            <div class="form-group mb-3">
+                                <input class="btn btn-primary w-100" type="submit" value="Add New Student">
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="card shadow my-3">
+                    <div class="card-body">
+                        <table class="table table-striped table-bordered table-hover table-condensed">
+                            <thead>
+                                <tr class="text-center align-item-center">
+                                    <th>SL</th>
+                                    <th>Name</th>
+                                    <th>Roll</th>
+                                    <th>Class</th>
+                                    <th>Gender</th>
+                                    <th>Result</th>
+                                    <th>Grade</th>
+                                    <th>Photo</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="data_list">
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="./function.js"></script>
+    <script src="./student.js"></script>
+</body>
+</html>
